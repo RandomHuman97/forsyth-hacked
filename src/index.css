@@ -1,24 +1,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+:root {
+  /* Brand colors */
+  --brand-coal: #0f0d0e;
+  --brand-charcoal: #231f20;
+  --brand-charcoal-muted: #1b1918;
+  --brand-gray: #262522;
+  --brand-yellow: #fcba28;
+  --brand-pink: #f38ba3;
+  --brand-green: #0ba95b;
+  --brand-purple: #7b5ea7;
+  --brand-beige: #f9f4da;
+  --brand-blue: #12b5e5;
+  --brand-orange: #fc7428;
+  --brand-red: #ed203d;
+  --brand-white: #fff;
+  
+  /* Special colors */
+  --gentlePeach: #f99157;
+  --magesticPurple: #9d7dce;
+  
+  /* Gray scale */
+  --gray-25: #f7f7f7;
+  --gray-50: #f3f3f5;
+  --gray-75: #e9eaec;
+  --gray-100: #e1e2e4;
+  --gray-200: #b1b4b9;
+  --gray-300: #767980;
+  --gray-400: #5c6069;
+  --gray-500: #383c44;
+  --gray-600: #1d2025;
+  --gray-700: #131519;
+  --gray-800: #0c0e10;
+  --gray-900: #000;
 }
 
-@theme {
-  --color-bg: #E6E1D3; 
-  --color-surface:  #d2cab3;  
-  --color-pop:  #bcb18e;  
-  --color-text: #000000;
-  --color-primary: #FF4C60;      
-  --color-primary-dark: #D43B4D; 
-  --color-secondary: #0ABAB5;    
-  --color-secondary-dark: #089A96;
-  --color-accent: #F9DC5C;      
-  --color-muted: #6B7280;      
-  --color-danger: #E02424;     
-  --color-success: #22C55E;    
+/* Light mode specific colors */
+:root {
+  /* Light mode semantic colors */
+  --lightModeRed: #d81f2e;
+  --lightModePink: #ca3e6a;
+  --lightModeGreen: #178040;
+  --lightModeBlue: #038282;
+  --lightModeOrange: #a95525;
+  --lightModePurple: #6c4c9f;
+  --lightModeYellow: #7c7651;
+  
+  /* Code theme - Light mode */
+  --code-theme--bg: var(--brand-white);
+  --code-theme--surface2: var(--gray-75);
+  --code-theme--surface3: var(--gray-100);
+  --code-theme--accent: var(--brand-purple);
+  --code-theme--plain: var(--brand-charcoal);
+  --code-theme--comment: #8c8c8c;
+  --code-theme--deleted: var(--lightModeRed);
+  --code-theme--inserted: var(--lightModeGreen);
+  --code-theme--string: var(--lightModeOrange);
+  --code-theme--value: var(--lightModeYellow);
+  --code-theme--function: var(--lightModePurple);
+  --code-theme--tag: var(--lightModePink);
+  --code-theme--property: var(--lightModeBlue);
+  
+  /* Text and background colors */
+  --text-primary: var(--brand-charcoal);
+  --bg-primary: var(--brand-white);
+  --bg-secondary: var(--gray-50);
 }
+
+/* Dark mode specific colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Code theme - Dark mode */
+    --code-theme--bg: var(--brand-charcoal);
+    --code-theme--surface2: var(--brand-coal);
+    --code-theme--surface3: #2f2f2f;
+    --code-theme--accent: var(--brand-yellow);
+    --code-theme--plain: var(--brand-beige);
+    --code-theme--comment: #a7a7a7;
+    --code-theme--deleted: var(--brand-red);
+    --code-theme--inserted: var(--brand-green);
+    --code-theme--string: var(--gentlePeach);
+    --code-theme--value: var(--brand-yellow);
+    --code-theme--function: var(--magesticPurple);
+    --code-theme--tag: var(--brand-pink);
+    --code-theme--property: var(--brand-blue);
+    
+    /* Text and background colors */
+    --text-primary: var(--brand-beige);
+    --bg-primary: var(--brand-charcoal);
+    --bg-secondary: var(--brand-coal);
+  }
+}
+
+/* Tailwind theme configuration */
+@theme inline {
+  /* Configure colors */
+  --color-primary: var(--brand-purple);
+  --color-secondary: var(--brand-blue);
+  --color-accent: var(--brand-yellow);
+  --color-warning: var(--brand-orange);
+  --color-danger: var(--brand-red);
+  --color-success: var(--brand-green);
+  
+  /* Text colors */
+  --color-text-base: var(--text-primary);
+  --color-text-muted: var(--gray-300);
+  --color-text-inverted: var(--brand-white);
+  
+  /* Background colors */
+  --color-background: var(--bg-primary);
+  --color-background-secondary: var(--bg-secondary);
+  
+  /* Brand colors */
+  --color-brand-coal: var(--brand-coal);
+  --color-brand-charcoal: var(--brand-charcoal);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-green: var(--brand-green);
+  --color-brand-burple: var(--brand-purple);
+  --color-brand-beige: var(--brand-beige);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-red: var(--brand-red);
+  
+  /* Code theme colors */
+  --color-code-bg: var(--code-theme--bg);
+  --color-code-surface: var(--code-theme--surface2);
+  --color-code-text: var(--code-theme--plain);
+  --color-code-comment: var(--code-theme--comment);
+  --color-code-string: var(--code-theme--string);
+  --color-code-function: var(--code-theme--function);
+  --color-code-tag: var(--code-theme--tag);
+}
+
 body {
   
   background-color: var(--color-bg);
