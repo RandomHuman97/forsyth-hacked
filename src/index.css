@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
+/* Force immediate dark mode */
+html {
+  background-color: var(--brand-coal) !important;
+  color: var(--brand-beige) !important;
+}
+
 :root {
   /* Brand colors */
   --brand-coal: #0f0d0e;
@@ -34,6 +40,19 @@
   --gray-700: #131519;
   --gray-800: #0c0e10;
   --gray-900: #000;
+
+  /* Typography */
+  --font-body: 'Outfit', sans-serif;
+  --font-heading: 'Paytone One', sans-serif;
+}
+
+/* Font utility classes */
+.font-outfit {
+  font-family: var(--font-body);
+}
+
+.font-paytone {
+  font-family: var(--font-heading);
 }
 
 /* Light mode specific colors */
@@ -69,28 +88,26 @@
 }
 
 /* Dark mode specific colors */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Code theme - Dark mode */
-    --code-theme--bg: var(--brand-charcoal);
-    --code-theme--surface2: var(--brand-coal);
-    --code-theme--surface3: #2f2f2f;
-    --code-theme--accent: var(--brand-yellow);
-    --code-theme--plain: var(--brand-beige);
-    --code-theme--comment: #a7a7a7;
-    --code-theme--deleted: var(--brand-red);
-    --code-theme--inserted: var(--brand-green);
-    --code-theme--string: var(--gentlePeach);
-    --code-theme--value: var(--brand-yellow);
-    --code-theme--function: var(--magesticPurple);
-    --code-theme--tag: var(--brand-pink);
-    --code-theme--property: var(--brand-blue);
-    
-    /* Text and background colors */
-    --text-primary: var(--brand-beige);
-    --bg-primary: var(--brand-charcoal);
-    --bg-secondary: var(--brand-coal);
-  }
+.dark {
+  /* Code theme - Dark mode */
+  --code-theme--bg: var(--brand-charcoal);
+  --code-theme--surface2: var(--brand-coal);
+  --code-theme--surface3: #2f2f2f;
+  --code-theme--accent: var(--brand-yellow);
+  --code-theme--plain: var(--brand-beige);
+  --code-theme--comment: #a7a7a7;
+  --code-theme--deleted: var(--brand-red);
+  --code-theme--inserted: var(--brand-green);
+  --code-theme--string: var(--gentlePeach);
+  --code-theme--value: var(--brand-yellow);
+  --code-theme--function: var(--magesticPurple);
+  --code-theme--tag: var(--brand-pink);
+  --code-theme--property: var(--brand-blue);
+  
+  /* Text and background colors */
+  --text-primary: var(--brand-beige);
+  --bg-primary: var(--brand-coal);
+  --bg-secondary: var(--brand-charcoal);
 }
 
 /* Tailwind theme configuration */
@@ -135,6 +152,50 @@
 }
 
 body {
-  
-  background-color: var(--color-bg);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Animation for subtle background pattern (Removed) */
+/* @keyframes pan-background {
+  0% { background-position: 0 0; }
+  100% { background-position: 400px 400px; }
+} */
+
+.animated-code-block {
+  position: relative;
+  /* Remove background pattern */
+  /* background-image: radial-gradient(circle at 25% 25%, var(--brand-blue) 2px, transparent 0%), radial-gradient(circle at 75% 75%, var(--brand-purple) 2px, transparent 0%); */
+  /* background-size: 40px 40px; */
+  /* Remove animation */
+  /* animation: pan-background 60s linear infinite; */
+}
+
+.animated-code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, var(--brand-charcoal-muted) 100%);
+  z-index: 1; /* Ensure it's above background pattern but below text */
+  opacity: 0.5; /* Adjust opacity as needed */
+}
+
+.animated-code-block > div {
+  position: relative; /* Ensure content is above pseudo-element */
+  z-index: 2;
+}
+
+/* Removed glow and blink animations */
+
+::selection {
+  background-color: var(--brand-yellow);
+  color: var(--brand-coal); /* Optional: Set text color for contrast */
 }
