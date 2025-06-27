@@ -43,7 +43,7 @@ const SignupPage = () => {
                </svg>
             </div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-brand-beige">Sign up for the hackathon</h2>
-            <p className="mt-2 text-center text-sm text-brand-beige">Or join the <a href="#" className="font-semibold text-brand-yellow hover:underline">event</a></p>
+            <p className="mt-2 text-center text-sm text-brand-beige">See the info <a href="/" className="font-semibold text-brand-yellow hover:underline">here</a></p>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">

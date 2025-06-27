@@ -11,7 +11,6 @@ const Home: React.FC = () => {
       <Navbar />
       <Hero />
       <WorkshopsSection />
-      <SpeakersSection />
       <RewardsSection />
     </div>
   );

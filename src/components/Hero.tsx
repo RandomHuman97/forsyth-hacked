@@ -1,8 +1,7 @@
-import React from 'react';
 
 const Hero = () => {
   return (
-    <section className="grid mt-48 lg:grid-cols-12 gap-8 lg:gap-12 container mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden sm:overflow-visible mt-24 sm:mt-28 lg:mt-32">
+    <section className="grid mt-24 lg:grid-cols-12 gap-8 lg:gap-12 container mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden sm:overflow-visible mt-24 sm:mt-28 lg:mt-32">
       {/* Left side - Text content */}
       <div className="lg:col-span-6 h-full grid items-center">
         <div className="grid gap-6 sm:gap-8">
@@ -18,7 +17,7 @@ const Hero = () => {
             Join the most exciting hackathon where innovation meets opportunity. Build, learn, and win amazing prizes...
           </p>
           <div className="mt-2 sm:mt-4">
-            <a href="/register">
+            <a href="/signup">
               <span className="inline-block px-6 py-3 sm:py-4 bg-brand-yellow text-brand-charcoal rounded-full uppercase font-medium border-2 border-black cursor-pointer hover:bg-brand-orange transition-colors duration-300" 
                    style={{ filter: 'drop-shadow(5px 5px 0px rgb(0, 0, 0))' }}>
                 <span className="font-outfit font-bold text-sm sm:text-base">Register Now</span>
@@ -47,7 +46,7 @@ const Hero = () => {
           
           {/* Code content */}
           <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm md:text-base">
-            <div className="text-gray-600 mb-4">// Hackathon details - automatically updated</div>
+            <div className="text-gray-600 mb-4">// Hackathon details</div>
             
             <div className="text-purple-400">{'{'}</div>
             
@@ -64,23 +63,25 @@ const Hero = () => {
                 <span className="text-brand-blue">"date"</span>: 
                 <span className="text-green-400"> "2025-10-26T09:00:00Z"</span>,
               </div>
+              <div className="text-gray-600 mb-4">// October 26th 2025 @ 9pm</div>
               <div>
                 <span className="text-brand-blue">"duration"</span>: 
                 <span className="text-cyan-400"> "24h"</span>,
               </div>
               <div>
                 <span className="text-brand-blue">"location"</span>: 
-                <span className="text-pink-400"> "Virtual"</span>,
+                <span className="text-pink-400"> "Forsyth Library"</span>,
               </div>
+
               <div>
                 <span className="text-brand-blue">"theme"</span>: 
-                <span className="text-yellow-300"> "AI & Sustainable Tech"</span>,
+                <span className="text-yellow-300"> "Game Music"</span>,
               </div>
               <div>
                 <span className="text-brand-blue">"prizes"</span>: 
                 <span className="text-gray-400"> {'{'}</span>
                 <span className="text-brand-blue">"total"</span>: 
-                <span className="text-green-400"> 10000</span>,
+                <span className="text-green-400"> 50</span>,
                 <span className="text-brand-blue ml-4">"currency"</span>: 
                 <span className="text-yellow-300"> "USD"</span>
                 <span className="text-gray-400"> {'}'}</span>,
@@ -92,10 +93,6 @@ const Hero = () => {
             </div>
             
             <div className="text-purple-400">{'}'}</div>
-            
-            <div className="mt-4 sm:mt-6 text-gray-600">
-              <span className="text-green-500">//</span> Last updated: {new Date().toISOString().split('T')[0]}
-            </div>
           </div>
         </div>
       </div>

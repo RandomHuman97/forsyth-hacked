@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
             href="/"
             className="flex items-center gap-2 text-brand-beige hover:text-brand-yellow transition-colors duration-200"
           >
+            {/*
             <div className="grid place-items-center text-center bg-brand-coal rounded-full w-10 h-10 sm:w-[56px] sm:h-[56px] border border-brand-yellow">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -28,9 +29,10 @@ const Navbar: React.FC = () => {
                 <path d="M16 8L16 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </div>
+            */}
             <span className="font-outfit text-xl sm:text-2xl">HACK FORSYTH</span>
-          </a>
 
+            </a>
           {/* Desktop Menu */}
           <div className="hidden sm:flex justify-end items-center gap-8">
             <a

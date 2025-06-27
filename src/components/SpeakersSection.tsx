@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Github, Twitter, Linkedin, Terminal, Cpu, Code2, Database, Network, Binary, Cloud, Palette, GitBranch } from 'lucide-react';
 
 const SpeakersSection = () => {
   const [activeSpeaker, setActiveSpeaker] = useState<string | null>(null);
-  const [terminalMode, setTerminalMode] = useState(false);
 
   const speakers = [
     {
@@ -83,12 +82,12 @@ const SpeakersSection = () => {
               onMouseLeave={() => setActiveSpeaker(null)}
             >
               {/* Animated hover effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-brand-yellow/5 to-transparent opacity-0 ${activeSpeaker === speaker.id ? 'opacity-100 animate-pulse' : ''} transition-opacity duration-300`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-brand-yellow/5 to-transparent opacity-0 ${activeSpeaker === speaker.id ? 'opacity-100 animate-pulse' : ''} transition-opacity duration-100`}></div>
               
               {/* Speaker content */}
               <div className="relative z-10">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-16 h-16 rounded-full border-2 ${speaker.color.replace('text', 'border')} overflow-hidden transition-transform ${activeSpeaker === speaker.id ? 'scale-110' : ''}`}>
+                  <div className={`w-16 h-16 rounded-full border-2 ${speaker.color.replace('text', 'border')} overflow-hidden `}>
                     <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
@@ -130,12 +129,7 @@ const SpeakersSection = () => {
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 text-center font-mono text-sm text-gray-500 border-t border-gray-800 pt-8">
-          <div className="font-mono text-sm text-gray-500">
-            {speakers.length} SPEAKERS LOADED • SYSTEM_READY
-          </div>
-        </div>
+        
       </div>
     </section>
   );
