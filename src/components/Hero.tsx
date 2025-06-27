@@ -16,11 +16,17 @@ const Hero = () => {
           <p className="text-lg sm:text-xl lg:text-2xl max-w-[40ch] font-outfit text-brand-beige/90 leading-relaxed">
             Join the most exciting hackathon where innovation meets opportunity. Build, learn, and win amazing prizes...
           </p>
-          <div className="mt-2 sm:mt-4">
+          <div className="mt-2 sm:mt-4 flex gap-4">
             <a href="/signup">
               <span className="inline-block px-6 py-3 sm:py-4 bg-brand-yellow text-brand-charcoal rounded-full uppercase font-medium border-2 border-black cursor-pointer hover:bg-brand-orange transition-colors duration-300" 
                    style={{ filter: 'drop-shadow(5px 5px 0px rgb(0, 0, 0))' }}>
                 <span className="font-outfit font-bold text-sm sm:text-base">Register Now</span>
+              </span>
+            </a>
+            <a href="/about">
+              <span className="inline-block px-6 py-3 sm:py-4 bg-black text-brand-yellow rounded-full uppercase font-medium border-2 border-brand-yellow cursor-pointer hover:bg-brand-orange transition-colors duration-300" 
+                   style={{ filter: 'drop-shadow(5px 5px 0px rgb(0, 0, 0))' }}>
+                <span className="font-outfit font-bold text-sm sm:text-base">About Us</span>
               </span>
             </a>
           </div>
