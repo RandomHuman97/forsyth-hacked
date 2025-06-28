@@ -1,5 +1,3 @@
-import React from 'react';
-import brain from '../assets/dev-brain.svg'
 import { Code2, Database, Cloud, Layout, Smartphone, Zap } from 'lucide-react';
 
 const WorkshopsSection = () => {

@@ -67,7 +67,7 @@ const SpeakersSection = () => {
               <span className="text-green-400 text-left">$</span> <span className="text-white">SPEAKERS_LIST</span> <span className="text-blue-400">--hackathon-2025</span>
             </h2>
           </div>
-          <h3 className="font-paytone text-left text-5xl md:text-7xl uppercase text-brand-beige text-brand-beige">
+          <h3 className="font-paytone text-left text-5xl md:text-7xl uppercase text-brand-beige">
             SPEAKERS
           </h3>
         </header>

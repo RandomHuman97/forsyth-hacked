@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, UserPlus, Mail, Code2, Presentation, Bot } from 'lucide-react';
+import { Brain, UserPlus, Mail, Code2, Presentation } from 'lucide-react';
 
 const HowItWorksSection = () => {
   const steps = [
@@ -36,9 +36,9 @@ const HowItWorksSection = () => {
  
 
   return (
-    <section className="pt-20 pb-10 my-20 bg-brand-coal">
+    <section className="pt-20 pb-10 my-0 bg-brand-coal">
       <div className="container mx-auto px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-4">
           <h3 className="font-paytone text-5xl md:text-6xl text-brand-white mb-6">
             <span className="relative">
               <span className="relative z-10">HOW IT</span>

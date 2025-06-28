@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router"
 import Home from './pages/Home.tsx'
 import SignupPage from './pages/SignupPage.tsx'
 import Footer from './components/Footer.tsx'
+import About from "./pages/About.tsx"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/signup" element={<SignupPage/>}/>
+          <Route path="/about" element={<About/>}/>
         </Routes>
         <footer className="mt-auto">
           <Footer />
