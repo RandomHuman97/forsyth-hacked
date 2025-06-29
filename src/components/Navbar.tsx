@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
               className="px-6 sm:px-8 py-2 font-outfit font-semibold border-2 border-brand-yellow rounded-full uppercase text-brand-yellow hover:bg-brand-yellow hover:text-brand-charcoal transition-all duration-200"
               style={{ filter: 'drop-shadow(5px 5px 0px rgba(255,255,255,0.1))' }}
             >
-              Sign Up
+              Register
             </a>
           </div>
 

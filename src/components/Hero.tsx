@@ -63,7 +63,7 @@ const Hero = () => {
               </div>
               <div>
                 <span className="text-brand-blue">"entry_cost"</span>: 
-                <span className="text-yellow-300"> "$5"</span>,
+                <span className="text-yellow-300"> "FREE"</span>,
               </div>
               <div>
                 <span className="text-brand-blue">"date"</span>: 
@@ -76,7 +76,7 @@ const Hero = () => {
               </div>
               <div>
                 <span className="text-brand-blue">"location"</span>: 
-                <span className="text-pink-400"> "Forsyth Library"</span>,
+                <span className="text-pink-400"> "Sharon Forks Library"</span>,
               </div>
 
               <div>
@@ -87,7 +87,7 @@ const Hero = () => {
                 <span className="text-brand-blue">"prizes"</span>: 
                 <span className="text-gray-400"> {'{'}</span>
                 <span className="text-brand-blue">"total"</span>: 
-                <span className="text-green-400"> 50</span>,
+                <span className="text-green-400"> 100</span>,
                 <span className="text-brand-blue ml-4">"currency"</span>: 
                 <span className="text-yellow-300"> "USD"</span>
                 <span className="text-gray-400"> {'}'}</span>,

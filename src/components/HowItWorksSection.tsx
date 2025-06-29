@@ -7,12 +7,12 @@ const HowItWorksSection = () => {
       icon: <UserPlus />,
       title: 'Who Can Join',
       description:
-        'Hack Forsyth s a hybrid-style hackathon open to all students in grades 9-12. You do not need to be in Forsyth County Schools to participate.',
+        'Hack Forsyth is a hybrid-style hackathon open to all students in grades 9-12. You do not need to be in Forsyth County Schools to participate.',
     },
     {
       icon: <Mail />,
       title: 'Register',
-      description: 'Sign up by yourslef or with up to 3 teammates. Use your email to get updates and access materials.',
+      description: 'Sign up by yourself or with up to 3 teammates. Use your email to get updates and access materials.',
     },
     {
       icon: <Brain />,
@@ -41,10 +41,9 @@ const HowItWorksSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-4">
           <h3 className="font-paytone text-5xl md:text-6xl text-brand-white mb-6">
             <span className="relative">
-              <span className="relative z-10">HOW IT</span>
+              <span className="relative z-10">HOW IT WORKS</span>
               <span className="absolute bottom-1 left-0 w-full h-3 bg-brand-yellow z-0"></span>
             </span>
-            <span> WORKS</span>
           </h3>
         </div>
 

@@ -22,7 +22,7 @@ const AIPolicySection = () => {
           <h3 className="font-paytone text-5xl md:text-6xl text-brand-charcoal mb-6">GENERATIVE AI POLICY</h3>
           <p className="font-outfit text-lg mb-10 text-gray-700 max-w-2xl mx-auto">
 We fully encourage the use of generative Al (like ChatGPT, Copilot, etc.) in the completion of your project. However, to ensure a fair
-competition          </p>
+competition...          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
             <div>
