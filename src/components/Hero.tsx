@@ -10,7 +10,7 @@ const Hero = () => {
               Code. Create. Conquer.
             </h1>
             <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl xl:text-4xl font-outfit text-brand-beige leading-tight">
-              Your Next Hackathon Awaits
+              Forsyth County's First High School Hackathon
             </h2>
           </header>
           <p className="text-lg sm:text-xl lg:text-2xl max-w-[40ch] font-outfit text-brand-beige/90 leading-relaxed">
@@ -57,37 +57,50 @@ const Hero = () => {
             <div className="text-purple-400">{'{'}</div>
             
             <div className="ml-4 space-y-2 sm:space-y-3">
+              
               <div>
                 <span className="text-brand-blue">"event"</span>: 
-                <span className="text-yellow-300"> "HackForsyth 2025"</span>,
+                <span className="text-yellow-300"> "Hack Forsyth 2025"</span>,
               </div>
+              <div>
+                <span className="text-brand-blue">"theme"</span>: 
+                <span className="text-yellow-300"> "Retro"</span>,
+              </div>
+              <br/>
               <div>
                 <span className="text-brand-blue">"entry_cost"</span>: 
                 <span className="text-yellow-300"> "FREE"</span>,
               </div>
               <div>
-                <span className="text-brand-blue">"date"</span>: 
-                <span className="text-green-400"> "2025-10-26T09:00:00Z"</span>,
+                <span className="text-brand-blue">"max_group_size"</span>: 
+                <span className="text-yellow-400"> 4</span>,
               </div>
-              <div className="text-gray-600 mb-4">// October 26th 2025 @ 9pm</div>
               <div>
-                <span className="text-brand-blue">"duration"</span>: 
-                <span className="text-cyan-400"> "24h"</span>,
+                <span className="text-brand-blue">"date"</span>: 
+                <span className="text-green-400"> "August 18th - August 23rd"</span>,
               </div>
+              {/*<div className="text-gray-600 mb-4">// August 18th 2025 @ 9pm</div>*/}
+               <div>
+                <span className="text-brand-blue">"programming_time"</span>: 
+                <span className="text-cyan-400"> "5 days"</span>,
+              </div>
+              <div>
+                <span className="text-brand-blue">"presentation_time"</span>: 
+                <span className="text-cyan-400"> "10 minutes"</span>,
+              </div>
+              <br/>
+             
               <div>
                 <span className="text-brand-blue">"location"</span>: 
-                <span className="text-pink-400"> "Sharon Forks Library"</span>,
+                <span className="text-yellow-400"> "Sharon Forks Library"</span>,
               </div>
 
-              <div>
-                <span className="text-brand-blue">"theme"</span>: 
-                <span className="text-yellow-300"> "Game Music"</span>,
-              </div>
+              
               <div>
                 <span className="text-brand-blue">"prizes"</span>: 
                 <span className="text-gray-400"> {'{'}</span>
-                <span className="text-brand-blue">"total"</span>: 
-                <span className="text-green-400"> 100</span>,
+                <span className="text-brand-blue">"top prize"</span>: 
+                <span className="text-pink-400"> 100</span>,
                 <span className="text-brand-blue ml-4">"currency"</span>: 
                 <span className="text-yellow-300"> "USD"</span>
                 <span className="text-gray-400"> {'}'}</span>,

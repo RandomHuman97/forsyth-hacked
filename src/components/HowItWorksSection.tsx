@@ -7,7 +7,7 @@ const HowItWorksSection = () => {
       icon: <UserPlus />,
       title: 'Who Can Join',
       description:
-        'Hack Forsyth is a hybrid-style hackathon open to all students in grades 9-12. You do not need to be in Forsyth County Schools to participate.',
+        'Hack Forsyth is a hybrid-style hackathon open to all students in grades 9-12. You do not need to be a student in Forsyth County Schools to participate.',
     },
     {
       icon: <Mail />,
@@ -18,7 +18,7 @@ const HowItWorksSection = () => {
       icon: <Brain />,
       title: 'Receive Prompt',
       description:
-        'On Monday, XXth, the prompt will be emailed and posted on the website. It includes details and guidelines.',
+        'On Monday, the 18th, the prompt will be emailed and posted on the website. It includes details and guidelines.',
     },
     {
       icon: <Code2 />,

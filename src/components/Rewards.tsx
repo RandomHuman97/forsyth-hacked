@@ -1,14 +1,14 @@
 import React from 'react';
-import { Trophy, Zap, Code, Shield, Bitcoin, Rocket } from 'lucide-react';
+import { Trophy, Zap, Code, Shield, Bitcoin, Rocket, AlarmClock, Brush } from 'lucide-react';
 
 const RewardsSection = () => {
   const prizeCategories = [
-    { name: 'Grand Prize', amount: '$100K', icon: <Trophy />, color: 'bg-brand-yellow' },
-    { name: 'AI Innovation', amount: '$75K', icon: <Code />, color: 'bg-purple-500' },
-    { name: 'Web3 Future', amount: '$75K', icon: <Bitcoin />, color: 'bg-blue-500' },
-    { name: 'Social Impact', amount: '$50K', icon: <Shield />, color: 'bg-green-500' },
-    { name: 'Design', amount: '$30K', icon: <Rocket />, color: 'bg-red-500' },
-    { name: "Peers' Choice", amount: '$20K', icon: <Zap />, color: 'bg-orange-500' }
+    { name: 'Second Place', amount: '$70', icon: <Trophy/>, color: 'bg-purple-500' },
+    { name: 'Grand Prize', amount: '$100', icon: <Trophy />, color: 'bg-brand-yellow' },
+    { name: 'Third Place', amount: '$30', icon: <Trophy/>, color: 'bg-blue-500' },
+    { name: '', amount: 'Most Historically Accurate', icon: <AlarmClock  />, color: 'bg-red-500' },
+    { name: '', amount: 'Peoples Choice', icon: <Shield />, color: 'bg-green-500' },
+    { name: "", amount: "Most Creative", icon: <Brush />, color: 'bg-orange-500' }
   ];
 
   return (
@@ -24,9 +24,6 @@ const RewardsSection = () => {
             </span>
             <span> CATEGORIES</span>
           </h3>
-          <p className="font-outfit text-2xl text-gray-600">
-            $15,500+ distributed across multiple achievement dimensions
-          </p>
         </div>
 
         {/* Card Grid */}
@@ -42,8 +39,6 @@ const RewardsSection = () => {
               </div>
               <h4 className="font-paytone text-3xl mb-2 text-black">{prize.amount}</h4>
               <h5 className="font-outfit text-xl text-black uppercase font-bold mb-4">{prize.name}</h5>
-              <div className="w-full border-t-2 border-black border-dashed opacity-30 my-4"></div>
-              <p className="font-mono text-sm text-black opacity-80">CATEGORY {i+1}</p>
             </div>
           ))}
         </div>
