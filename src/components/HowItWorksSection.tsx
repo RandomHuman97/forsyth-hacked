@@ -29,7 +29,7 @@ const HowItWorksSection = () => {
       icon: <Presentation />,
       title: 'Present!',
       description:
-        "On Saturday, present your project! If all members of your team can't make your designated presentation time don't worry. Thoroughly explain all of your project and show contribution from every teammate.",
+        "On Saturday, present your project! If all members of your team can't make your designated presentation time don't worry. Thoroughly explin all of your project and show contribution from every teammate.",
     },
   ];
 

@@ -1,109 +1,224 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
+
+type TeamMember = {
+  id: number;
+};
 
 const SignupPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    teamName: '',
-  });
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([{ id: 0 }]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget as HTMLFormElement);
+
+    const mainInfo = {
+      name: data.get('name'),
+      email: data.get('email'),
+      grade: data.get('grade'),
+      school: data.get('school'),
+    };
+
+    const members = teamMembers.map((member, _) => ({
+      name: data.get(`member-name-${member.id}`),
+      email: data.get(`member-email-${member.id}`),
+      grade: data.get(`member-grade-${member.id}`),
+      school: data.get(`member-school-${member.id}`),
+    }));
+
+    console.log('Main Info:', mainInfo);
+    console.log('Team Members:', members);
+    alert('Form submitted! Check console.');
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form Data Submitted:', formData);
-    alert('Signup form submitted! (Data logged to console)'); // Placeholder
+  const addTeamMember = () => {
+    if (teamMembers.length >= 3) return;
+    const newId = teamMembers.length
+      ? Math.max(...teamMembers.map((m) => m.id)) + 1
+      : 0;
+    setTeamMembers([...teamMembers, { id: newId }]);
+  };
+
+  const removeTeamMember = (id: number) => {
+    setTeamMembers(teamMembers.filter((m) => m.id !== id));
   };
 
   return (
-    <>
-      <div className="min-h-screen outfit flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-brand-coal text-brand-beige">
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <div className="mx-auto h-12 w-auto grid place-items-center text-center bg-brand-coal rounded-full w-[56px] h-[56px]">
-               <svg 
-                 xmlns="http://www.w3.org/2000/svg" 
-                 width="32" 
-                 height="32" 
-                 viewBox="0 0 32 32" 
-                 fill="currentColor"
-                 className="text-brand-yellow"
-               >
-                 <title>Hackathon Logo</title>
-                 <path d="M8 4L4 8V24L8 28H12L16 24L20 28H24L28 24V8L24 4H20L16 8L12 4H8Z" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                 <path d="M12 12L16 16L12 20M20 12L16 16L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                 <path d="M16 8L16 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-               </svg>
-            </div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-brand-beige">Sign up for the hackathon</h2>
-            <p className="mt-2 text-center text-sm text-brand-beige">See the info <a href="/" className="font-semibold text-brand-yellow hover:underline">here</a></p>
+    <div className="min-h-screen bg-brand-coal text-brand-beige py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="text-center">
+          <div className="mx-auto grid place-items-center bg-brand-coal rounded-full w-[56px] h-[56px]">
+            <svg width="32" height="32" fill="currentColor" className="text-brand-yellow" />
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="name" className="sr-only">Full Name</label>
-                <input 
-                  id="name" 
-                  name="name" 
-                  type="text" 
-                  autoComplete="name" 
-                  required 
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-brand-charcoal/10 dark:border-brand-coal placeholder-gray-300 rounded-t-md focus:outline-none focus:ring-0 focus:z-10 focus:border-brand-purple dark:focus:border-brand-coal sm:text-sm bg-brand-white dark:bg-brand-charcoal"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="email-address" className="sr-only">Email address</label>
-                <input 
-                  id="email-address" 
-                  name="email" 
-                  type="email" 
-                  autoComplete="email" 
-                  required 
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-brand-charcoal/10 dark:border-brand-coal placeholder-gray-300 bg-brand-white dark:bg-brand-charcoal focus:outline-none focus:ring-0 focus:z-10 focus:border-brand-purple dark:focus:border-brand-coal  sm:text-sm"
-                  placeholder="Email address"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="teamName" className="sr-only">Team Name (Optional)</label>
-                <input 
-                  id="teamName" 
-                  name="teamName" 
-                  type="text" 
-                  autoComplete="off" 
-                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-brand-charcoal/10 dark:border-brand-coal placeholder-gray-300 bg-brand-white dark:bg-brand-charcoal rounded-b-md focus:outline-none focus:ring-0 focus:z-10 focus:border-brand-purple dark:focus:border-brand-coal sm:text-sm"
-                  placeholder="Team Name (Optional)"
-                  value={formData.teamName}
-                  onChange={handleChange}
-                />
-              </div>
+          <h2 className="mt-6 text-3xl font-extrabold">Sign up for the hackathon</h2>
+          <p className="mt-2 text-sm">
+            See the info{' '}
+            <a href="/" className="text-brand-yellow hover:underline font-semibold">
+              here
+            </a>
+          </p>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-3xl mx-auto bg-gray-900 rounded-xl border border-gray-800 shadow-2xl overflow-auto "
+        >
+          {/* Tabs */}
+          <div className="flex items-center bg-gray-800/80 border-b border-gray-700 px-4">
+            <div className="flex space-x-2 py-3">
+              <div className="h-3 w-3 rounded-full bg-red-500" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-green-500" />
             </div>
-            
-            <div>
-              <button 
-                type="submit" 
-                className="group relative w-full flex justify-center py-2 px-4 rounded-md font-black bg-brand-yellow text-brand-coal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-yellow disabled:opacity-50"
-                 disabled={false}
+            <div className="ml-4 text-sm flex">
+              <div className="px-4 py-2 text-gray-500">main.ts</div>
+              <div className="px-4 py-2 text-gray-500">team.ts</div>
+              <div className="px-4 py-2 text-brand-blue-light border-b-2 border-brand-blue-light">signup.json</div>
+            </div>
+          </div>
+
+          {/* Hint */}
+          <div className="text-center text-sm italic text-gray-400 px-4 pt-4">// Edit the code block below to fill in your information</div>
+
+          {/* Code-style Inputs */}
+          <div className="p-5 font-mono text-xs sm:text-sm space-y-2">
+            <div className="text-purple-400">{'{'}</div>
+            <div className="ml-4 space-y-2">
+              <div>
+                <span className="text-brand-blue">"name"</span>: "
+                <input
+                  name="name"
+                  required
+                  placeholder="Full Name"
+                  className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                />",
+              </div>
+              <div>
+                <span className="text-brand-blue">"email"</span>: "
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                  className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                />",
+              </div>
+              <div>
+                <span className="text-brand-blue">"grade"</span>:{' '}
+                <input
+                  name="grade"
+                  type="number"
+                  min="9"
+                  max="12"
+                  required
+                  placeholder="9-12"
+                  className="bg-transparent text-yellow-300 w-12 px-1 focus:outline-none inline-block ml-1
+                    [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />,
+              </div>
+              <div>
+                <span className="text-brand-blue">"school"</span>: "
+                <input
+                  name="school"
+                  required
+                  placeholder="School"
+                  className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                />",
+              </div>
+
+              <br />
+
+              <div>
+                <span className="text-brand-blue">"team_members"</span>: [
+              </div>
+              <div className="ml-4 space-y-2">
+                {teamMembers.map(({ id }, i) => (
+                  <div key={id}>
+                    <div className="flex gap-2">
+                      <div className="text-gray-400">{'{'}</div>
+                      <button
+                        type="button"
+                        onClick={() => removeTeamMember(id)}
+                        className="text-red-400 hover:underline hover:cursor-pointer select-none"
+                        aria-label={`Remove team member ${i + 1}`}
+                      >
+                        // Remove
+                      </button>
+                    </div>
+                    <div className="ml-4 space-y-1">
+                      <div>
+                        <span className="text-brand-blue">"name"</span>: "
+                        <input
+                          name={`member-name-${id}`}
+                          placeholder="Name"
+                          className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                        />",
+                      </div>
+                      <div>
+                        <span className="text-brand-blue">"email"</span>: "
+                        <input
+                          name={`member-email-${id}`}
+                          type="email"
+                          placeholder="Email (optional)"
+                          className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                        />",
+                      </div>
+                      <div>
+                        <span className="text-brand-blue">"grade"</span>:{' '}
+                        <input
+                          name={`member-grade-${id}`}
+                          type="number"
+                          min="9"
+                          max="12"
+                          placeholder="9-12"
+                          className="bg-transparent text-yellow-300 w-12 px-1 focus:outline-none inline-block ml-1
+                            [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        />,
+                      </div>
+                      <div>
+                        <span className="text-brand-blue">"school"</span>: "
+                        <input
+                          name={`member-school-${id}`}
+                          placeholder="School"
+                          className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
+                        />",
+                      </div>
+                    </div>
+                    <div className="text-gray-400">{i === teamMembers.length - 1 ? '}' : '},'}</div>
+                  </div>
+                ))}
+              </div>
+              <div>],</div>
+            </div>
+            <div className="text-purple-400">{'}'}</div>
+
+            {/* Buttons */}
+            <div className="pt-5 space-y-3">
+              <button
+                type="button"
+                onClick={addTeamMember}
+                disabled={teamMembers.length >= 3}
+                className={`w-full py-2 px-4 border rounded-md transition ${
+                  teamMembers.length >= 3
+                    ? 'border-gray-600 text-gray-600 cursor-not-allowed'
+                    : 'border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-coal'
+                }`}
+              >
+                + Add Team Member
+              </button>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 font-black bg-brand-yellow text-brand-coal rounded-md hover:opacity-90 transition"
               >
                 Sign Up
               </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
-export default SignupPage; 
+export default SignupPage;
