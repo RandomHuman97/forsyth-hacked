@@ -1,40 +1,72 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router';
+import Turnstile from '../components/Turnstile';
 
 type TeamMember = {
   id: number;
 };
 
 const SignupPage = () => {
+  const [submitting, setSubmitting] = useState(false);
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([{ id: 0 }]);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget as HTMLFormElement);
 
-    const mainInfo = {
+    if (submitting) return;
+
+    const data = new FormData(e.currentTarget as HTMLFormElement);
+    const turnstileToken = data.get('cf-turnstile-response');
+
+    if (!turnstileToken || typeof turnstileToken !== 'string' || turnstileToken.trim() === '') {
+      alert('Please complete the Captcha challenge.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const sendData = {
       name: data.get('name'),
       email: data.get('email'),
       grade: data.get('grade'),
       school: data.get('school'),
+      CloudflareTurnstileResponse: turnstileToken,
+      members: teamMembers.map((member) => ({
+        name: data.get(`member-name-${member.id}`),
+        email: data.get(`member-email-${member.id}`),
+        grade: data.get(`member-grade-${member.id}`),
+        school: data.get(`member-school-${member.id}`),
+      })),
     };
 
-    const members = teamMembers.map((member, _) => ({
-      name: data.get(`member-name-${member.id}`),
-      email: data.get(`member-email-${member.id}`),
-      grade: data.get(`member-grade-${member.id}`),
-      school: data.get(`member-school-${member.id}`),
-    }));
+    try {
+      const response = await fetch('http://localhost:8080/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sendData),
+      });
 
-    console.log('Main Info:', mainInfo);
-    console.log('Team Members:', members);
-    alert('Form submitted! Check console.');
+      if (response.ok) {
+        alert('Signup successful!');
+        navigate('/#');
+      } else {
+        alert('Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('An error occurred. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const addTeamMember = () => {
     if (teamMembers.length >= 3) return;
-    const newId = teamMembers.length
-      ? Math.max(...teamMembers.map((m) => m.id)) + 1
-      : 0;
+    const newId = teamMembers.length ? Math.max(...teamMembers.map((m) => m.id)) + 1 : 0;
     setTeamMembers([...teamMembers, { id: newId }]);
   };
 
@@ -43,7 +75,8 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-coal text-brand-beige py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-brand-coal text-brand-beige px-4 sm:px-6 lg:px-8">
+      <Navbar />
       <div className="max-w-xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center">
@@ -62,7 +95,7 @@ const SignupPage = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-3xl mx-auto bg-gray-900 rounded-xl border border-gray-800 shadow-2xl overflow-auto "
+          className="w-full max-w-3xl mx-auto bg-gray-900 rounded-xl border border-gray-800 shadow-2xl overflow-auto"
         >
           {/* Tabs */}
           <div className="flex items-center bg-gray-800/80 border-b border-gray-700 px-4">
@@ -82,7 +115,7 @@ const SignupPage = () => {
           <div className="text-center text-sm italic text-gray-400 px-4 pt-4">// Edit the code block below to fill in your information</div>
 
           {/* Code-style Inputs */}
-          <div className="p-5 font-mono text-xs sm:text-sm space-y-2">
+          <div className="p-5 font-mono space-y-2">
             <div className="text-purple-400">{'{'}</div>
             <div className="ml-4 space-y-2">
               <div>
@@ -151,6 +184,7 @@ const SignupPage = () => {
                         <span className="text-brand-blue">"name"</span>: "
                         <input
                           name={`member-name-${id}`}
+                          required
                           placeholder="Name"
                           className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
                         />",
@@ -171,6 +205,7 @@ const SignupPage = () => {
                           type="number"
                           min="9"
                           max="12"
+                          required
                           placeholder="9-12"
                           className="bg-transparent text-yellow-300 w-12 px-1 focus:outline-none inline-block ml-1
                             [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -195,6 +230,7 @@ const SignupPage = () => {
 
             {/* Buttons */}
             <div className="pt-5 space-y-3">
+              <Turnstile />
               <button
                 type="button"
                 onClick={addTeamMember}
@@ -202,16 +238,20 @@ const SignupPage = () => {
                 className={`w-full py-2 px-4 border rounded-md transition ${
                   teamMembers.length >= 3
                     ? 'border-gray-600 text-gray-600 cursor-not-allowed'
-                    : 'border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-coal'
+                    : 'border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-coal cursor-pointer'
                 }`}
               >
                 + Add Team Member
               </button>
               <button
                 type="submit"
-                className="w-full py-2 px-4 font-black bg-brand-yellow text-brand-coal rounded-md hover:opacity-90 transition"
+                disabled={submitting}
+                className={
+                  'w-full py-2 px-4 font-black bg-brand-yellow text-brand-coal rounded-md hover:opacity-90 transition ' +
+                  (submitting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer')
+                }
               >
-                Sign Up
+                {submitting ? 'Signing Up...' : 'Sign Up'}
               </button>
             </div>
           </div>
