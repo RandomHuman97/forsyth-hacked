@@ -42,7 +42,7 @@ const SignupPage = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/signup', {
+      const response = await fetch('https://zayaan.adiavi.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
