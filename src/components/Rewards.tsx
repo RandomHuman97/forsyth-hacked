@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Zap, Code, Shield, Bitcoin, Rocket, AlarmClock, Brush } from 'lucide-react';
+import { Trophy, Shield, AlarmClock, Brush } from 'lucide-react';
 
 const RewardsSection = () => {
   const prizeCategories = [
