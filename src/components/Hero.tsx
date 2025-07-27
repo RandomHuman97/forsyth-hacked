@@ -77,7 +77,7 @@ const Hero = () => {
               </div>
               <div>
                 <span className="text-brand-blue">"date"</span>: 
-                <span className="text-green-400"> "August 18th - August 23rd"</span>,
+                <span className="text-green-400"> "August 25th - August 30th"</span>,
               </div>
               {/*<div className="text-gray-600 mb-4">// August 18th 2025 @ 9pm</div>*/}
                <div>

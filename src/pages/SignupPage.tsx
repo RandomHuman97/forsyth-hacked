@@ -119,7 +119,7 @@ const SignupPage = () => {
             <div className="text-purple-400">{'{'}</div>
             <div className="ml-4 space-y-2">
               <div>
-                <span className="text-brand-blue">"name"</span>: "
+                <span className="text-brand-blue">"full_name"</span>: "
                 <input
                   name="name"
                   required
@@ -181,11 +181,11 @@ const SignupPage = () => {
                     </div>
                     <div className="ml-4 space-y-1">
                       <div>
-                        <span className="text-brand-blue">"name"</span>: "
+                        <span className="text-brand-blue">"full_name"</span>: "
                         <input
                           name={`member-name-${id}`}
                           required
-                          placeholder="Name"
+                          placeholder="Full Name"
                           className="bg-transparent text-yellow-300 w-full max-w-[30ch] px-1 focus:outline-none"
                         />",
                       </div>

@@ -3,8 +3,9 @@ import { Trophy, Shield, AlarmClock, Brush } from 'lucide-react';
 
 const RewardsSection = () => {
   const prizeCategories = [
-    { name: 'Second Place', amount: '$70', icon: <Trophy/>, color: 'bg-purple-500' },
+    { name: 'Second Place', amount: '$70', icon: <Trophy/>, color: 'bg-purple-500 hidden md:flex' },
     { name: 'Grand Prize', amount: '$100', icon: <Trophy />, color: 'bg-brand-yellow' },
+    { name: 'Second Place', amount: '$70', icon: <Trophy/>, color: 'bg-purple-500 sm:hidden' },
     { name: 'Third Place', amount: '$30', icon: <Trophy/>, color: 'bg-blue-500' },
     { name: '', amount: 'Most Historically Accurate', icon: <AlarmClock  />, color: 'bg-red-500' },
     { name: '', amount: 'Peoples Choice', icon: <Shield />, color: 'bg-green-500' },
