@@ -30,12 +30,14 @@ const SignupPage = () => {
     const sendData = {
       name: data.get('name'),
       email: data.get('email'),
+      phone: data.get('phone'),
       grade: data.get('grade'),
       school: data.get('school'),
       CloudflareTurnstileResponse: turnstileToken,
       members: teamMembers.map((member) => ({
         name: data.get(`member-name-${member.id}`),
         email: data.get(`member-email-${member.id}`),
+        phone: data.get(`member-phone-${member.id}`),
         grade: data.get(`member-grade-${member.id}`),
         school: data.get(`member-school-${member.id}`),
       })),
@@ -138,6 +140,18 @@ const SignupPage = () => {
                 />",
               </div>
               <div>
+                <span className="text-brand-blue">"phone"</span>: "
+                <input
+                  name="phone"
+                  required
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  type="tel"
+                  placeholder="1012345678"
+                  className="bg-transparent text-yellow-300 w-full max-w-[11ch] px-1 focus:outline-none"
+                />",
+              </div>
+              <div>
                 <span className="text-brand-blue">"grade"</span>:{' '}
                 <input
                   name="grade"
@@ -199,6 +213,15 @@ const SignupPage = () => {
                         />",
                       </div>
                       <div>
+                        <span className="text-brand-blue">"phone"</span>: "
+                        <input
+                          name={`member-phone-${id}`}
+                          type="tel"
+                          placeholder="1012345678 (optional)"
+                          className="bg-transparent text-yellow-300 w-full max-w-[22ch] px-1 focus:outline-none"
+                        />",
+                      </div>
+                      <div>
                         <span className="text-brand-blue">"grade"</span>:{' '}
                         <input
                           name={`member-grade-${id}`}
@@ -224,6 +247,19 @@ const SignupPage = () => {
                   </div>
                 ))}
               </div>
+              {
+                teamMembers.length < 3 && ( 
+              <button
+                          type="button"
+                          onClick={() => addTeamMember()}
+                          className="text-green-600 hover:underline hover:cursor-pointer select-none"
+                          aria-label={`Add team member`}
+                        >
+                          // Add Team Member
+                        </button>
+                ) 
+              }
+
               <div>],</div>
             </div>
             <div className="text-purple-400">{'}'}</div>
